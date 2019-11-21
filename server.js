@@ -1,7 +1,8 @@
-const express = require('express')
-const index = require('./routes/index')
-const client = require('./src/mongo')
-require('dotenv').config()
+import express from 'express'
+import index from './routes'
+import client from './src/mongo'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 const port = 3000

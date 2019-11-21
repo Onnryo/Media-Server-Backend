@@ -8,8 +8,9 @@
     "build": "docker-compose build",
     "start": "docker-compose up -d",
     "logs": "docker-compose logs",
+    "buildBabel": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./.dockerignore,./.env,./.gitignore,./.prettierrc,./docker-compose.yml,./Dockerfile,./LICENSE,./package.json,./package-lock.json,./README.md --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -L server.js"
+    "dev": "nodemon -L server.js --exec babel-node --presets babel-preset-env"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,20 @@
   "homepage": "https://github.com/jdaughd2/Media-Server-Backend#readme",
   "dependencies": {
     "async": "^3.1.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.4"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.19.4",
+    "rimraf": "^3.0.0"
   }
 }
