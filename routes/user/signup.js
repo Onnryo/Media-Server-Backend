@@ -85,7 +85,6 @@ const checkUser = (body, callback) => {
     Stores user info in users collection
 */
 const createUser = (body, callback) => {
-    console.log(body.username, body.password)
     client
         .get()
         .collection('users')

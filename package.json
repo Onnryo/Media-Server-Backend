@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "stop": "docker-compose down",
-    "build": "docker-compose build",
-    "start": "docker-compose up -d",
-    "logs": "docker-compose logs",
-    "buildBabel": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./.dockerignore,./.env,./.gitignore,./.prettierrc,./docker-compose.yml,./Dockerfile,./LICENSE,./package.json,./package-lock.json,./README.md --copy-files",
+    "stopDocker": "docker-compose down",
+    "buildDocker": "docker-compose build",
+    "startDocker": "docker-compose up -d",
+    "logDocker": "docker-compose logs",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -L server.js --exec babel-node --presets babel-preset-env"
+    "dev": "NODE_ENV=development nodemon -L server.js --exec babel-node --presets babel-preset-env",
+    "start": "NODE_ENV=production nodemon -L server.js --exec babel-node --presets babel-preset-env"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,6 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^1.19.4",
-    "rimraf": "^3.0.0"
+    "nodemon": "^1.19.4"
   }
 }
