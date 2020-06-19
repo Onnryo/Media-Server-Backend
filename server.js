@@ -1,6 +1,8 @@
 import express from 'express'
-import index from './routes'
-import client from './src/mongo'
+import index from './src/routes'
+import client from './src/utils/mongo'
+import torrentClient from './src/utils/torrent'
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -14,6 +16,7 @@ app.use('/', index)
 
 client.connect(process.env.MONGO_URL, err => {
     if (err) return console.log(err)
+    torrentClient.connect()
     app.listen(port, () =>
         console.log(`Media Server Backend listening on port ${port}.`)
     )
